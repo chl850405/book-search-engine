@@ -15,21 +15,18 @@ const PORT = process.env.PORT || 3001;
 
 const startServer = async () => {
   // create a new Apollo server and pass in our schema data
-  const server = new ApolloServer({ 
+  const apolloServer = new ApolloServer({
     typeDefs, 
     resolvers,
+    introspection: true,
+    playground: true,
     context: authMiddleware,
   });
 
-    // Start the Apollo server
-    await server.start();
+  // integrate our Apollo server with the Express application as middleware
+  apolloServer.applyMiddleware({ app });
 
-    // integrate our Apollo server with the Express application as middleware
-    server.applyMiddleware({ app });
-  
-    //  test API
-    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-  };
+};
   
   // Initialize the Apollo server
   startServer();
