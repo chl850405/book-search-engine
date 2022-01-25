@@ -10,6 +10,10 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chl850405/book-search-engine.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
