@@ -1,4 +1,5 @@
-{ "homepage":"https://b00ks34rch.herokuapp.com/",
+{
+  "homepage": "https://b00ks34rch.herokuapp.com/",
   "name": "googlebooks-app",
   "version": "1.0.0",
   "description": "",
@@ -10,7 +11,9 @@
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "cd server && npm start",
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "heroku-postbuild": "cd client && npm run build"
+    "heroku-postbuild": "cd client && npm run build",
+    "predeploy": "npm run build",
+"deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -20,7 +23,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "gh-pages": "^3.2.3"
   },
   "dependencies": {
     "apollo-server-express": "^3.6.2",
